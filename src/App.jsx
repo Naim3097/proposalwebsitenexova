@@ -15,7 +15,7 @@ const proposalData = {
   services: [
     {
       title: "WordPress Management & Web Development",
-      image: "/WEBSITES SCREENSHOTS/FTECH/Screenshot 2026-02-04 152406.png",
+      image: "/WEBSITES%20SCREENSHOTS/FTECH/Screenshot%202026-02-04%20152406.png",
       desc: "Comprehensive digital solution including technical training and custom development.",
       details: [
         "WordPress Management Training (6 hours)",
