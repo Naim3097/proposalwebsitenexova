@@ -6,28 +6,68 @@ import { Globe, Server, Shield, Smartphone, Code, Layout, Check, Mail, Phone, Ma
   Based on user request
 */
 const proposalData = {
-  invoiceNo: "INV-FTECH-2025-002",
-  date: "February 4, 2026",
-  validDate: "February 11, 2026", 
+  invoiceNo: "INV-001",
+  date: "February 6, 2026",
+  validDate: "February 20, 2026",
   clients: [
-    "FTECH Solutions Sdn Bhd"
+    "First Class Credit",
+    "Katimas Properties",
+    "Koperasi Kapital Rakyat",
+    "JomKaki Motor"
   ],
   services: [
     {
-      title: "WordPress Management & Web Development",
-      image: "/WEBSITES%20SCREENSHOTS/FTECH/Screenshot%202026-02-04%20152406.png",
-      desc: "Comprehensive digital solution including technical training and custom development.",
+      title: "First Class Credit",
+      image: "/proposed/first class credit.png",
+      desc: "Comprehensive corporate portal with integrated customer service features.",
       details: [
-        "WordPress Management Training (6 hours)",
-        "Website Hosting & Domain Setup",
-        "Custom 10-page Website Design"
+        "9 custom-designed pages",
+        "Dual language support (BM & ENG)",
+        "Loan calculator & inquiry forms",
+        "Secure customer portal placeholder"
       ],
-      price: 4400
+      price: 5500
+    },
+    {
+      title: "Katimas Properties",
+      image: "/proposed/katimas properties.png",
+      desc: "Modern real estate showcase platform emphasizing visual portfolio.",
+      details: [
+        "6 high-impact visual pages",
+        "Property listing gallery",
+        "Interactive location maps",
+        "Direct agent WhatsApp integration"
+      ],
+      price: 4200
+    },
+    {
+      title: "Koperasi Kapital Rakyat",
+      image: "/proposed/koperasi kapital rakyat.png",
+      desc: "Trust-focused institutional website for cooperative members.",
+      details: [
+        "9 informational pages",
+        "Member login area structure",
+        "Annual report download center",
+        "News & announcements system"
+      ],
+      price: 5500
+    },
+    {
+      title: "JomKaki Motor",
+      image: "/proposed/jomkaki.png",
+      desc: "Dynamic automotive catalog with extensive inventory management.",
+      details: [
+        "User-friendly car search & filter",
+        "Estimated 70+ inventory pages",
+        "High-res gallery for vehicles",
+        "Fast-loading inventory system"
+      ],
+      price: 7800
     }
   ],
-  subtotal: 4400,
-  discount: 1320,
-  total: 3080
+  subtotal: 23000,
+  discount: 4000,
+  total: 19000
 };
 
 /* 
@@ -680,13 +720,13 @@ function App() {
                 </td>
               </tr>
               <tr>
-                <td colSpan="2" className="p-5 text-right text-emerald-600 font-medium highlight">Less: Deposit Paid (30%)</td>
+                <td colSpan="2" className="p-5 text-right text-emerald-600 font-medium highlight">Discount Package</td>
                 <td className="p-5 text-right font-bold text-emerald-600 font-mono">
                   -{proposalData.discount.toLocaleString('en-MY', { minimumFractionDigits: 2 })}
                 </td>
               </tr>
               <tr className="bg-slate-900 text-white">
-                <td colSpan="2" className="p-8 text-right font-bold text-2xl tracking-tight">TOTAL DUE</td>
+                <td colSpan="2" className="p-8 text-right font-bold text-2xl tracking-tight">TOTAL INVESTMENT</td>
                 <td className="p-8 text-right font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
                   <span className="text-lg text-blue-400 mr-1 align-top relative top-1">RM</span>
                   {proposalData.total.toLocaleString('en-MY', { minimumFractionDigits: 2 })}
