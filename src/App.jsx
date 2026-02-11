@@ -357,22 +357,32 @@ function App() {
         <div className="grid grid-cols-2 gap-12 mb-16">
           <div className="space-y-6">
             <p className="text-lg leading-relaxed text-slate-600 font-light">
-              <strong className="text-slate-900 font-semibold">{companyInfo.name}</strong> partners with ambitious brands to build digital products that matter. 
-            </p>
-            <p className="text-lg leading-relaxed text-slate-600 font-light">
-              We believe your website should be your best employee: working 24/7 without complaint, explaining your value perfectly every time, and constantly bringing in new business.
+              <strong className="text-slate-900 font-semibold">{companyInfo.name}</strong> partners with ambitious brands. We believe effective digital products must start with a clear answer to a simple question: <strong className="text-slate-900">What is the purpose?</strong>
             </p>
             
-            <div className="pt-4 flex gap-4">
-               <div className="glass-panel p-4 rounded-xl flex-1 text-center bg-blue-50/50">
-                  <span className="block text-3xl font-bold text-blue-600 mb-1">Fast</span>
-                  <span className="text-xs text-slate-500 uppercase tracking-wider">Performance</span>
-               </div>
-               <div className="glass-panel p-4 rounded-xl flex-1 text-center bg-cyan-50/50">
-                  <span className="block text-3xl font-bold text-cyan-600 mb-1">Secure</span>
-                  <span className="text-xs text-slate-500 uppercase tracking-wider">Architecture</span>
-               </div>
-            </div>
+            <ul className="space-y-4 text-slate-600">
+               <li className="flex gap-3 items-start p-3 bg-blue-50/50 rounded-lg">
+                  <span className="text-blue-500 font-bold shrink-0">01.</span>
+                  <div>
+                     <strong className="text-slate-800 block">Brand Showcase?</strong>
+                     <span className="text-sm">Establish authority with a stunning corporate identity. <span className="text-slate-400">(See: Nexova & Tropicor)</span></span>
+                  </div>
+               </li>
+               <li className="flex gap-3 items-start p-3 bg-cyan-50/50 rounded-lg">
+                  <span className="text-cyan-500 font-bold shrink-0">02.</span>
+                  <div>
+                     <strong className="text-slate-800 block">Traffic & Content?</strong>
+                     <span className="text-sm">Dominate search results with high-speed SEO hubs. <span className="text-slate-400">(See: Gearbox CVT)</span></span>
+                  </div>
+               </li>
+               <li className="flex gap-3 items-start p-3 bg-indigo-50/50 rounded-lg">
+                  <span className="text-indigo-500 font-bold shrink-0">03.</span>
+                  <div>
+                     <strong className="text-slate-800 block">Sales & Leads?</strong>
+                     <span className="text-sm">Convert visitors into customers with targeted funnels. <span className="text-slate-400">(See: LeanX)</span></span>
+                  </div>
+               </li>
+            </ul>
           </div>
 
           <div className="relative">
@@ -380,7 +390,7 @@ function App() {
              <div className="glass-panel p-8 rounded-2xl border border-slate-100 flex flex-col justify-center items-center text-center h-full relative bg-white/50 backdrop-blur-sm">
                 <Quote size={48} className="text-blue-100 mb-6" />
                 <p className="text-xl text-slate-700 italic font-light">
-                  "Good design is obvious. Great design is transparent."
+                  "Your website isn't just a billboard. It's your best employee—working 24/7 to explain your value and close the deal."
                 </p>
                 <div className="w-12 h-1 bg-slate-200 mt-6 mb-2 rounded-full"></div>
                 <p className="text-sm text-slate-400 uppercase tracking-widest font-bold">Nexova Philosophy</p>
@@ -516,12 +526,9 @@ function App() {
                        </li>
                     </ul>
                  </div>
-                 <div className="w-1/3">
-                    <div className="aspect-[4/5] rounded-xl overflow-hidden bg-white/5 border border-white/10 shadow-inner relative">
-                        <img src="/proposed/payload2.jpeg" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Payload CMS Interface" />
-                        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                           <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">Admin Panel</span>
-                        </div>
+                 <div className="w-1/3 flex items-center justify-center">
+                    <div className="rounded-xl overflow-hidden bg-white/5 border border-white/10 shadow-inner relative p-8 backdrop-blur-sm group">
+                        <img src="/proposed/Payload Logo.png" className="w-full h-auto object-contain invert opacity-90 group-hover:opacity-100 transition-opacity" alt="Payload CMS Logo" />
                     </div>
                  </div>
               </div>
