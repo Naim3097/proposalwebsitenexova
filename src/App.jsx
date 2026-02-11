@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Server, Shield, Smartphone, Code, Layout, Check, Mail, Phone, MapPin, Rocket, ArrowUpRight, Quote, ShoppingBag, Info, Calendar, Palette, Instagram, Camera, Layers, ExternalLink } from 'lucide-react';
+import { Globe, Server, Shield, Smartphone, Code, Layout, Check, Mail, Phone, MapPin, Rocket, ArrowUpRight, Quote, ShoppingBag, Info, Calendar, Palette, Instagram, Camera, Layers, ExternalLink, FileText } from 'lucide-react';
 
 /* 
   PROPOSAL DATA 
@@ -18,7 +18,7 @@ const proposalData = {
   services: [
     {
       title: "First Class Credit",
-      image: "/proposed/first class credit.png",
+      // image: "/proposed/first class credit.png", REMOVED
       desc: "Comprehensive corporate portal with integrated customer service features.",
       details: [
         "9 custom-designed pages",
@@ -32,6 +32,10 @@ const proposalData = {
       title: "Katimas Properties",
       isLivePreview: true,
       url: "https://katimas-ui-2.vercel.app/",
+      pdfLinks: [
+        { label: "Design Concept 1", url: "/proposed/KATIMAS HOME PAGE 1.pdf" },
+        { label: "Design Concept 2", url: "/proposed/KATIMAS HOME PAGE 2.pdf" }
+      ],
       desc: "Minimal, smooth corporate theme with integrated brand kit and corporate colors.",
       details: [
         "6 high-impact visual pages",
@@ -43,7 +47,7 @@ const proposalData = {
     },
     {
       title: "Koperasi Kapital Rakyat",
-      image: "/proposed/koperasi kapital rakyat.png",
+      // image: "/proposed/koperasi kapital rakyat.png", REMOVED
       desc: "Trust-focused institutional website for cooperative members.",
       details: [
         "9 informational pages",
@@ -55,7 +59,8 @@ const proposalData = {
     },
     {
       title: "JomKaki Motor",
-      image: "/proposed/jomkaki.png",
+      isLivePreview: true,
+      url: "https://jomkakimotor.vercel.app/",
       desc: "Dynamic automotive catalog with extensive inventory management.",
       details: [
         "User-friendly car search & filter",
@@ -511,7 +516,7 @@ function App() {
                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></div>
                        <div className="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
                    </div>
-                   <div className="mx-auto w-1/2 h-4 bg-white rounded text-[9px] text-center flex items-center justify-center overflow-hidden">
+                   <div className="mx-auto w-3/4 h-5 bg-white rounded-md text-xs text-center flex items-center justify-center overflow-hidden">
                       {service.url ? (
                         <a href={service.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600 hover:underline block w-full truncate px-1 font-medium z-10 relative">
                            {service.url.replace('https://', '').replace(/\/$/, '')}
@@ -522,7 +527,7 @@ function App() {
                    </div>
                 </div>
                 {/* Mockup Image or Live Preview */}
-                <div className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden">
+                <div className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden flex items-center justify-center">
                    {service.isLivePreview ? (
                      <iframe 
                         src={service.url} 
@@ -530,12 +535,17 @@ function App() {
                         title="Live Preview" 
                         loading="lazy"
                      />
-                   ) : (
+                   ) : service.image ? (
                      <img 
                         src={service.image} 
                         className="w-full h-full object-cover object-top transition-transform duration-[3s] ease-in-out group-hover:scale-105" 
                         alt={`${service.title} Mockup`}
                      />
+                   ) : (
+                     <div className="flex flex-col items-center justify-center text-slate-400 p-8 text-center bg-slate-50 w-full h-full">
+                        <Layout size={48} className="mb-2 opacity-50" />
+                        <span className="text-sm font-medium">Design Concept In Progress</span>
+                     </div>
                    )}
                 </div>
              </div>
@@ -544,11 +554,19 @@ function App() {
                 <div>
                    <h3 className="text-2xl font-bold text-slate-800 mb-1">{service.title}</h3>
                    <p className="text-slate-500 text-sm mb-3">{service.desc}</p>
-                   {service.url && (
-                     <a href={service.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-100 px-3 py-1.5 rounded-lg mb-4 transition-colors">
-                       <ExternalLink size={12} /> Live Preview: {service.url.replace('https://', '')}
-                     </a>
-                   )}
+                   
+                   <div className="flex flex-wrap gap-2 mb-4">
+                     {service.url && (
+                        <a href={service.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-100 px-3 py-1.5 rounded-lg transition-colors">
+                          <ExternalLink size={14} /> Live Preview
+                        </a>
+                      )}
+                      {service.pdfLinks && service.pdfLinks.map((pdf, pIdx) => (
+                        <a key={pIdx} href={pdf.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-600 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-1.5 rounded-lg transition-colors">
+                          <FileText size={14} /> {pdf.label}
+                        </a>
+                      ))}
+                   </div>
                 </div>
                 <div className="font-mono font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-lg">
                    RM {service.price.toLocaleString()}
@@ -573,13 +591,14 @@ function App() {
         {proposalData.services.slice(2, 4).map((service, index) => (
           <div key={index} className="mb-10 break-inside-avoid">
              <div className="glass-panel bg-white p-1 rounded-2xl shadow-xl overflow-hidden mb-6 relative group">
+                {/* Browser Header */}
                 <div className="h-8 bg-slate-50 border-b border-slate-100 flex items-center px-4 gap-2">
                    <div className="flex gap-1.5">
                        <div className="w-2.5 h-2.5 rounded-full bg-red-400/80"></div>
                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></div>
                        <div className="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
                    </div>
-                   <div className="mx-auto w-1/2 h-4 bg-white rounded text-[9px] text-center flex items-center justify-center overflow-hidden">
+                   <div className="mx-auto w-3/4 h-5 bg-white rounded-md text-xs text-center flex items-center justify-center overflow-hidden">
                       {service.url ? (
                         <a href={service.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600 hover:underline block w-full truncate px-1 font-medium z-10 relative">
                            {service.url.replace('https://', '').replace(/\/$/, '')}
@@ -589,12 +608,27 @@ function App() {
                       )}
                    </div>
                 </div>
-                <div className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden">
-                   <img 
-                     src={service.image} 
-                     className="w-full h-full object-cover object-top transition-transform duration-[3s] ease-in-out group-hover:scale-105" 
-                     alt={`${service.title} Mockup`}
-                   />
+                {/* Mockup Image or Live Preview */}
+                <div className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden flex items-center justify-center">
+                   {service.isLivePreview ? (
+                     <iframe 
+                        src={service.url} 
+                        className="w-full h-[200%] border-0 transform scale-50 origin-top-left pointer-events-none" 
+                        title="Live Preview" 
+                        loading="lazy"
+                     />
+                   ) : service.image ? (
+                     <img 
+                        src={service.image} 
+                        className="w-full h-full object-cover object-top transition-transform duration-[3s] ease-in-out group-hover:scale-105" 
+                        alt={`${service.title} Mockup`}
+                     />
+                   ) : (
+                     <div className="flex flex-col items-center justify-center text-slate-400 p-8 text-center bg-slate-50 w-full h-full">
+                        <Layout size={48} className="mb-2 opacity-50" />
+                        <span className="text-sm font-medium">Design Concept In Progress</span>
+                     </div>
+                   )}
                 </div>
              </div>
 
@@ -602,11 +636,19 @@ function App() {
                 <div>
                    <h3 className="text-2xl font-bold text-slate-800 mb-1">{service.title}</h3>
                    <p className="text-slate-500 text-sm mb-3">{service.desc}</p>
-                   {service.url && (
-                     <a href={service.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-100 px-3 py-1.5 rounded-lg mb-4 transition-colors">
-                       <ExternalLink size={12} /> Live Preview: {service.url.replace('https://', '')}
-                     </a>
-                   )}
+                   
+                   <div className="flex flex-wrap gap-2 mb-4">
+                     {service.url && (
+                        <a href={service.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-100 px-3 py-1.5 rounded-lg transition-colors">
+                          <ExternalLink size={14} /> Live Preview
+                        </a>
+                      )}
+                      {service.pdfLinks && service.pdfLinks.map((pdf, pIdx) => (
+                        <a key={pIdx} href={pdf.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-600 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-1.5 rounded-lg transition-colors">
+                          <FileText size={14} /> {pdf.label}
+                        </a>
+                      ))}
+                   </div>
                 </div>
                 <div className="font-mono font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-lg">
                    RM {service.price.toLocaleString()}
