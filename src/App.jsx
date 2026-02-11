@@ -30,7 +30,7 @@ const proposalData = {
     },
     {
       title: "Katimas Properties",
-      image: "/proposed/katimas properties.png",
+      isLivePreview: true,
       url: "https://katimas-ui-2.vercel.app/",
       desc: "Minimal, smooth corporate theme with integrated brand kit and corporate colors.",
       details: [
@@ -515,13 +515,22 @@ function App() {
                       {service.url ? service.url.replace('https://', '').replace(/\/$/, '') : 'nexova-secure-preview.com'}
                    </div>
                 </div>
-                {/* Mockup Image - Full Cover */}
+                {/* Mockup Image or Live Preview */}
                 <div className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden">
-                   <img 
-                     src={service.image} 
-                     className="w-full h-full object-cover object-top transition-transform duration-[3s] ease-in-out group-hover:scale-105" 
-                     alt={`${service.title} Mockup`}
-                   />
+                   {service.isLivePreview ? (
+                     <iframe 
+                        src={service.url} 
+                        className="w-full h-[200%] border-0 transform scale-50 origin-top-left pointer-events-none" 
+                        title="Live Preview" 
+                        loading="lazy"
+                     />
+                   ) : (
+                     <img 
+                        src={service.image} 
+                        className="w-full h-full object-cover object-top transition-transform duration-[3s] ease-in-out group-hover:scale-105" 
+                        alt={`${service.title} Mockup`}
+                     />
+                   )}
                 </div>
              </div>
 
