@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Server, Shield, Smartphone, Code, Layout, Check, Mail, Phone, MapPin, Rocket, ArrowUpRight, Quote, ShoppingBag, Info, Calendar, Palette, Instagram, Camera, Layers, ExternalLink, FileText } from 'lucide-react';
+import { Globe, Server, Shield, Smartphone, Code, Layout, Check, Mail, Phone, MapPin, Rocket, ArrowUpRight, Quote, ShoppingBag, Info, Calendar, Palette, Instagram, Camera, Layers, ExternalLink, FileText, Clock } from 'lucide-react';
 
 /* 
   PROPOSAL DATA 
@@ -128,26 +128,63 @@ const portfolioAssets = {
 
 const portfolioProjects = [
   {
-     category: "Company Website",
+     category: "Company & Corporate Identity",
      items: [
-       { title: "Nexova.my", url: "https://www.nexova.my/", key: "NEXOVA.MY" }
+       { 
+         title: "Nexova.my", 
+         url: "https://www.nexova.my/", 
+         key: "NEXOVA.MY",
+         features: [
+           "Brand Kit Created & Integrated",
+           "Landing Page builder optimised for conversion and sales (analytics, pixel integration, inventory, checkout and integrated payment gateway)",
+           "Landing Page for (Conversion)"
+         ]
+       },
+       { 
+         title: "F-Tech Lighting", 
+         url: "https://www.ftechlighting.com/", 
+         key: "FTECH",
+         features: ["Brand Kit Created & Integrated"] 
+       },
+       { 
+         title: "Tropicor Foods", 
+         url: "https://tropicorfoods.vercel.app/", 
+         key: "TROPICOR", 
+         features: ["Brand Kit Created & Integrated"] 
+       },
+       { 
+         title: "AceIT Group", 
+         url: "https://aceit-group.vercel.app/", 
+         key: "ACEIT",
+         features: [
+            "Brand Kit Created & Integrated",
+            "Horizontal Navigation Style - Corporate theme",
+            "Simple Corporate Products Design (ongoing)"
+         ]
+       }
      ]
   },
   {
-    category: "Ongoing Website Projects & SEO",
+    category: "Selected Works (SEO & Performance)",
     items: [
-      { title: "F-Tech Lighting", url: "https://www.ftechlighting.com/", key: "FTECH" },
-      { title: "Tropicor Foods", url: "https://tropicorfoods.vercel.app/", key: "TROPICOR" },
-      { title: "Gearbox CVT", url: "https://gearboxcvt.com/", key: "GEARBOX CVT" },
-      { title: "Harga Repair Gearbox", url: "https://www.hargarepairgearbox.com/", key: "HARGA REPAIR GEARBOX" },
-      { title: "Onex Transmission", url: "https://onextransmission-lp.vercel.app/", key: "ONEXTRANSMISSION" },
-      { title: "AceIT Group", url: "https://aceit-group.vercel.app/", key: "ACEIT" }
-    ]
-  },
-  {
-    category: "E-Commerce & Ads",
-    items: [
-       { title: "LeanX Sign Up", url: "https://leanx-sign-up.vercel.app/", key: "LEANX SIGN UP" }
+      { 
+        title: "Gearbox CVT", 
+        url: "https://gearboxcvt.com/", 
+        key: "GEARBOX CVT",
+        features: ["SEO Hub - Traffic Generation, Traffic Acquisition"]
+      },
+      { 
+        title: "Harga Repair Gearbox", 
+        url: "https://www.hargarepairgearbox.com/", 
+        key: "HARGA REPAIR GEARBOX",
+        features: ["SEO/SEM Content - Car Models, Repair Price, Symptoms - Keywords Optimization"]
+      },
+      { 
+        title: "LeanX Sign Up", 
+        url: "https://leanx-sign-up.vercel.app/", 
+        key: "LEANX SIGN UP",
+        features: ["SEO and Product Content + E Commerce for Digital Products"]
+      }
     ]
   }
 ];
@@ -195,15 +232,29 @@ const SectionHeader = ({ title, subtitle }) => (
 );
 
 const ProjectDisplay = ({ project, assets }) => (
-    <div className="mb-14">
-       <div className="flex justify-between items-center mb-6">
-         <h4 className="font-bold text-xl lg:text-2xl text-slate-800 flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-blue-200">
-               <Globe size={16} />
-            </div>
-            {project.title}
-         </h4>
-         <div className="flex flex-col items-end">
+    <div className="mb-14 break-inside-avoid">
+       <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6 gap-4">
+         <div>
+            <h4 className="font-bold text-xl lg:text-2xl text-slate-800 flex items-center gap-3 mb-2">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                <Globe size={16} />
+                </div>
+                {project.title}
+            </h4>
+            
+            {project.features && (
+                <ul className="pl-12 space-y-1">
+                    {project.features.map((feature, idx) => (
+                        <li key={idx} className="text-sm text-slate-500 font-medium flex items-start gap-2">
+                           <Check size={14} className="text-blue-500 mt-1 shrink-0" />
+                           <span className="leading-snug">{feature}</span>
+                        </li>
+                    ))}
+                </ul>
+            )}
+         </div>
+
+         <div className="flex flex-col items-end shrink-0">
              <a 
                href={project.url} 
                target="_blank" 
@@ -212,7 +263,7 @@ const ProjectDisplay = ({ project, assets }) => (
              >
                Visit Live <ArrowUpRight size={12} />
              </a>
-             <span className="hidden lg:block text-[9px] text-slate-400 mt-1 tracking-wider">{project.url}</span>
+             <span className="hidden lg:block text-[9px] text-slate-400 mt-1 tracking-wider">{project.url.replace('https://','')}</span>
          </div>
        </div>
        
@@ -365,75 +416,70 @@ function App() {
 
        {/* --- PAGE 3: PORTFOLIO 1 --- */}
        <Page>
-        <SectionHeader title="Selected Works" subtitle="Digital Experiences (Series 1)" />
+        <SectionHeader title="Selected Works" subtitle="Company & Corporate Identity (Series 1)" />
         <div className="space-y-12">
-           {/* Company Website */}
+           {/* Company Website Group Start */}
            <div className="glass-panel p-1 rounded-3xl bg-slate-50/50">
               <div className="px-4 py-3 border-b border-slate-200/50 mb-4 flex items-center justify-between">
                  <h3 className="font-bold text-slate-700 text-sm uppercase tracking-wider">{portfolioProjects[0].category}</h3>
                  <div className="flex gap-1">
                     <div className="w-2 h-2 rounded-full bg-slate-300"></div>
-                    <div className="w-2 h-2 rounded-full bg-slate-300"></div>
-                    <div className="w-2 h-2 rounded-full bg-slate-300"></div>
                  </div>
               </div>
               <div className="px-4 pb-4">
-                 {portfolioProjects[0].items.map((project, pIdx) => (
+                 {/* Nexova & F-Tech */}
+                 {portfolioProjects[0].items.slice(0, 2).map((project, pIdx) => (
                    <ProjectDisplay key={pIdx} project={project} assets={portfolioAssets} />
                  ))}
               </div>
-           </div>
-
-           {/* First 2 Ongoing */}
-           <div>
-              <div className="flex items-center gap-4 mb-6">
-                 <div className="h-px bg-slate-200 flex-1"></div>
-                 <h3 className="text-lg font-bold text-slate-400 uppercase tracking-widest">{portfolioProjects[1].category}</h3>
-                 <div className="h-px bg-slate-200 flex-1"></div>
-              </div>
-              {portfolioProjects[1].items.slice(0, 2).map((project, pIdx) => (
-                <ProjectDisplay key={pIdx} project={project} assets={portfolioAssets} />
-              ))}
            </div>
         </div>
       </Page>
 
       {/* --- PAGE 4: PORTFOLIO 2 --- */}
       <Page>
-        <SectionHeader title="Selected Works" subtitle="Digital Experiences (Series 2)" />
+        <SectionHeader title="Selected Works" subtitle="Company & Corporate Identity (Series 2)" />
         <div className="space-y-12">
-           <div>
-             {portfolioProjects[1].items.slice(2, 4).map((project, pIdx) => (
+            <div className="glass-panel p-6 rounded-3xl bg-slate-50/50">
+             {/* Tropicor & AceIT */}
+             {portfolioProjects[0].items.slice(2, 4).map((project, pIdx) => (
                 <ProjectDisplay key={pIdx} project={project} assets={portfolioAssets} />
               ))}
-           </div>
+            </div>
         </div>
       </Page>
 
       {/* --- PAGE 5: PORTFOLIO 3 --- */}
       <Page>
-        <SectionHeader title="Selected Works" subtitle="Digital Experiences (Series 3)" />
+        <SectionHeader title="Selected Works" subtitle="SEO & Performance (Series 3)" />
         <div className="space-y-12">
-           <div>
-             {portfolioProjects[1].items.slice(4, 6).map((project, pIdx) => (
-                <ProjectDisplay key={pIdx} project={project} assets={portfolioAssets} />
-              ))}
-           </div>
-
-           {/* E-Commerce */}
-           <div className="glass-panel p-6 rounded-3xl bg-blue-50/30 border-blue-100">
+            <div className="glass-panel p-6 rounded-3xl bg-blue-50/30 border-blue-100">
               <h3 className="text-xl font-bold text-blue-900 mb-6 flex items-center gap-2">
-                 <ShoppingBag size={20} className="text-blue-500" />
-                 {portfolioProjects[2].category}
+                 <Rocket size={20} className="text-blue-500" />
+                 {portfolioProjects[1].category}
               </h3>
-              {portfolioProjects[2].items.map((project, pIdx) => (
+             {/* Gearbox & Harga Repair */}
+             {portfolioProjects[1].items.slice(0, 2).map((project, pIdx) => (
                 <ProjectDisplay key={pIdx} project={project} assets={portfolioAssets} />
               ))}
            </div>
         </div>
       </Page>
 
-      {/* --- PAGE 6: ARCHITECTURE STRATEGY --- */}
+       {/* --- PAGE 6: PORTFOLIO 4 --- */}
+       <Page>
+        <SectionHeader title="Selected Works" subtitle="SEO & Performance (Series 4)" />
+        <div className="space-y-12">
+            <div className="glass-panel p-6 rounded-3xl bg-blue-50/30 border-blue-100">
+             {/* LeanX */}
+             {portfolioProjects[1].items.slice(2, 3).map((project, pIdx) => (
+                <ProjectDisplay key={pIdx} project={project} assets={portfolioAssets} />
+              ))}
+           </div>
+        </div>
+      </Page>
+
+      {/* --- PAGE 7: ARCHITECTURE STRATEGY --- */}
       <Page>
         <SectionHeader title="Architecture Strategy" subtitle="Centralized Content Network" />
         
@@ -472,7 +518,7 @@ function App() {
                  </div>
                  <div className="w-1/3">
                     <div className="aspect-[4/5] rounded-xl overflow-hidden bg-white/5 border border-white/10 shadow-inner relative">
-                        <img src="/proposed/payload1.jpeg" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Payload CMS Interface" />
+                        <img src="/proposed/payload2.jpeg" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" alt="Payload CMS Interface" />
                         <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">Admin Panel</span>
                         </div>
@@ -502,168 +548,53 @@ function App() {
         </div>
       </Page>
 
-      {/* --- PAGE 7: PROPOSED DESIGNS 1 & 2 --- */}
+      {/* --- PAGE 7: PROPOSED DESIGNS --- */}
       <Page>
-        <SectionHeader title="Proposed Designs" subtitle="Visual Concepts (1/2)" />
+        <SectionHeader title="Proposed Designs" subtitle="Project Concepts & Status" />
         
-        {proposalData.services.slice(0, 2).map((service, index) => (
-          <div key={index} className="mb-10 break-inside-avoid">
-             <div className="glass-panel bg-white p-1 rounded-2xl shadow-xl overflow-hidden mb-6 relative group">
-                {/* Browser Header */}
-                <div className="h-8 bg-slate-50 border-b border-slate-100 flex items-center px-4 gap-2">
-                   <div className="flex gap-1.5">
-                       <div className="w-2.5 h-2.5 rounded-full bg-red-400/80"></div>
-                       <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></div>
-                       <div className="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
-                   </div>
-                   <div className="mx-auto w-3/4 h-5 bg-white rounded-md text-xs text-center flex items-center justify-center overflow-hidden">
-                      {service.url ? (
-                        <a href={service.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600 hover:underline block w-full truncate px-1 font-medium z-10 relative">
-                           {service.url.replace('https://', '').replace(/\/$/, '')}
-                        </a>
-                      ) : (
-                        <span className="text-slate-300">nexova-secure-preview.com</span>
-                      )}
-                   </div>
+        <div className="grid grid-cols-1 gap-6">
+          {proposalData.services.map((service, index) => (
+             <div key={index} className="bg-white rounded-2xl shadow-lg border border-slate-100 p-6 flex flex-col md:flex-row gap-6 items-start md:items-center break-inside-avoid">
+                {/* Icon / Status Indicator */}
+                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 ${service.url ? 'bg-blue-50 text-blue-600' : 'bg-slate-50 text-slate-400'}`}>
+                   {service.url ? <Globe size={32} /> : <div className="text-center"><Clock size={24} className="mb-1 mx-auto"/><span className="text-[10px] font-bold uppercase block leading-none">Pending</span></div>}
                 </div>
-                {/* Mockup Image or Live Preview */}
-                <div className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden flex items-center justify-center">
-                   {service.isLivePreview ? (
-                     <iframe 
-                        src={service.url} 
-                        className="w-full h-[200%] border-0 transform scale-50 origin-top-left pointer-events-none" 
-                        title="Live Preview" 
-                        loading="lazy"
-                     />
-                   ) : service.image ? (
-                     <img 
-                        src={service.image} 
-                        className="w-full h-full object-cover object-top transition-transform duration-[3s] ease-in-out group-hover:scale-105" 
-                        alt={`${service.title} Mockup`}
-                     />
-                   ) : (
-                     <div className="flex flex-col items-center justify-center text-slate-400 p-8 text-center bg-slate-50 w-full h-full">
-                        <Layout size={48} className="mb-2 opacity-50" />
-                        <span className="text-sm font-medium">Design Concept In Progress</span>
-                     </div>
-                   )}
-                </div>
-             </div>
 
-             <div className="flex justify-between items-start">
-                <div>
-                   <h3 className="text-2xl font-bold text-slate-800 mb-1">{service.title}</h3>
-                   <p className="text-slate-500 text-sm mb-3">{service.desc}</p>
+                <div className="flex-1">
+                   <h3 className="text-xl font-bold text-slate-800 mb-1">{service.title}</h3>
+                   <p className="text-slate-500 text-sm mb-4 max-w-2xl">{service.desc}</p>
                    
-                   <div className="flex flex-wrap gap-2 mb-4">
-                     {service.url && (
-                        <a href={service.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-100 px-3 py-1.5 rounded-lg transition-colors">
-                          <ExternalLink size={14} /> Live Preview
+                   <div className="flex flex-wrap gap-3">
+                      {/* Live Preview Button */}
+                      {service.url && (
+                        <a href={service.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg font-bold text-sm hover:bg-blue-700 transition-colors shadow-sm hover:shadow-md">
+                           <ExternalLink size={16} /> Open Live Preview
                         </a>
                       )}
-                      {service.pdfLinks && service.pdfLinks.map((pdf, pIdx) => (
-                        <a key={pIdx} href={pdf.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-600 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-1.5 rounded-lg transition-colors">
-                          <FileText size={14} /> {pdf.label}
+
+                      {/* PDF Links */}
+                      {service.pdfLinks && service.pdfLinks.map((pdf, idx) => (
+                        <a key={idx} href={pdf.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg font-bold text-sm hover:bg-slate-50 hover:border-slate-300 transition-colors shadow-sm">
+                           <FileText size={16} /> {pdf.label}
                         </a>
                       ))}
-                   </div>
-                </div>
-                <div className="font-mono font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-lg">
-                   RM {service.price.toLocaleString()}
-                </div>
-             </div>
-             
-             <div className="flex flex-wrap gap-2">
-              {service.details.map((detail, idx) => (
-                <span key={idx} className="text-[10px] uppercase font-bold tracking-wider text-slate-500 bg-slate-100 px-2 py-1 rounded border border-slate-200">
-                  {detail}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
-      </Page>
 
-       {/* --- PAGE 8: PROPOSED DESIGNS 3 & 4 --- */}
-       <Page>
-        <SectionHeader title="Proposed Designs" subtitle="Visual Concepts (2/2)" />
-        
-        {proposalData.services.slice(2, 4).map((service, index) => (
-          <div key={index} className="mb-10 break-inside-avoid">
-             <div className="glass-panel bg-white p-1 rounded-2xl shadow-xl overflow-hidden mb-6 relative group">
-                {/* Browser Header */}
-                <div className="h-8 bg-slate-50 border-b border-slate-100 flex items-center px-4 gap-2">
-                   <div className="flex gap-1.5">
-                       <div className="w-2.5 h-2.5 rounded-full bg-red-400/80"></div>
-                       <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></div>
-                       <div className="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
-                   </div>
-                   <div className="mx-auto w-3/4 h-5 bg-white rounded-md text-xs text-center flex items-center justify-center overflow-hidden">
-                      {service.url ? (
-                        <a href={service.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600 hover:underline block w-full truncate px-1 font-medium z-10 relative">
-                           {service.url.replace('https://', '').replace(/\/$/, '')}
-                        </a>
-                      ) : (
-                        <span className="text-slate-300">nexova-secure-preview.com</span>
+                      {/* No Assets Case */}
+                      {!service.url && (!service.pdfLinks || service.pdfLinks.length === 0) && (
+                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-500 rounded-lg text-sm font-medium border border-transparent cursor-not-allowed">
+                            <Info size={16} /> Mockup / UI UX In Development
+                         </div>
                       )}
                    </div>
                 </div>
-                {/* Mockup Image or Live Preview */}
-                <div className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden flex items-center justify-center">
-                   {service.isLivePreview ? (
-                     <iframe 
-                        src={service.url} 
-                        className="w-full h-[200%] border-0 transform scale-50 origin-top-left pointer-events-none" 
-                        title="Live Preview" 
-                        loading="lazy"
-                     />
-                   ) : service.image ? (
-                     <img 
-                        src={service.image} 
-                        className="w-full h-full object-cover object-top transition-transform duration-[3s] ease-in-out group-hover:scale-105" 
-                        alt={`${service.title} Mockup`}
-                     />
-                   ) : (
-                     <div className="flex flex-col items-center justify-center text-slate-400 p-8 text-center bg-slate-50 w-full h-full">
-                        <Layout size={48} className="mb-2 opacity-50" />
-                        <span className="text-sm font-medium">Design Concept In Progress</span>
-                     </div>
-                   )}
-                </div>
-             </div>
 
-             <div className="flex justify-between items-start">
-                <div>
-                   <h3 className="text-2xl font-bold text-slate-800 mb-1">{service.title}</h3>
-                   <p className="text-slate-500 text-sm mb-3">{service.desc}</p>
-                   
-                   <div className="flex flex-wrap gap-2 mb-4">
-                     {service.url && (
-                        <a href={service.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-100 px-3 py-1.5 rounded-lg transition-colors">
-                          <ExternalLink size={14} /> Live Preview
-                        </a>
-                      )}
-                      {service.pdfLinks && service.pdfLinks.map((pdf, pIdx) => (
-                        <a key={pIdx} href={pdf.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-600 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-1.5 rounded-lg transition-colors">
-                          <FileText size={14} /> {pdf.label}
-                        </a>
-                      ))}
-                   </div>
-                </div>
-                <div className="font-mono font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-lg">
-                   RM {service.price.toLocaleString()}
+                <div className="text-right shrink-0 hidden md:block pl-6 border-l border-slate-100">
+                   <div className="text-sm text-slate-400 font-medium mb-1">Investment</div>
+                   <div className="text-lg font-mono font-bold text-blue-600">RM {service.price.toLocaleString()}</div>
                 </div>
              </div>
-             
-             <div className="flex flex-wrap gap-2">
-              {service.details.map((detail, idx) => (
-                <span key={idx} className="text-[10px] uppercase font-bold tracking-wider text-slate-500 bg-slate-100 px-2 py-1 rounded border border-slate-200">
-                  {detail}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
 
         <div className="mt-8 bg-gradient-to-r from-slate-900 to-slate-800 p-6 rounded-xl border border-slate-700 flex items-center gap-5 text-white shadow-xl">
            <div className="h-10 w-10 bg-white/10 rounded-full flex items-center justify-center shrink-0 text-cyan-400">
