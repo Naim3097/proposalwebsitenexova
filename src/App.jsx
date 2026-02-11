@@ -10,24 +10,12 @@ const proposalData = {
   date: "February 6, 2026",
   validDate: "February 20, 2026",
   clients: [
-    "First Class Credit",
     "Katimas Properties",
-    "Koperasi Kapital Rakyat",
-    "JomKaki Motor"
+    "JomKaki Motor",
+    "First Class Credit",
+    "Koperasi Kapital Rakyat"
   ],
   services: [
-    {
-      title: "First Class Credit",
-      // image: "/proposed/first class credit.png", REMOVED
-      desc: "Comprehensive corporate portal with integrated customer service features.",
-      details: [
-        "9 custom-designed pages",
-        "Dual language support (BM & ENG)",
-        "Loan calculator & inquiry forms",
-        "Secure customer portal placeholder"
-      ],
-      price: 5500
-    },
     {
       title: "Katimas Properties",
       isLivePreview: true,
@@ -46,18 +34,6 @@ const proposalData = {
       price: 4200
     },
     {
-      title: "Koperasi Kapital Rakyat",
-      // image: "/proposed/koperasi kapital rakyat.png", REMOVED
-      desc: "Trust-focused institutional website for cooperative members.",
-      details: [
-        "9 informational pages",
-        "Member login area structure",
-        "Annual report download center",
-        "News & announcements system"
-      ],
-      price: 5500
-    },
-    {
       title: "JomKaki Motor",
       isLivePreview: true,
       url: "https://jomkakimotor.vercel.app/",
@@ -69,6 +45,30 @@ const proposalData = {
         "Fast-loading inventory system"
       ],
       price: 7800
+    },
+    {
+      title: "First Class Credit",
+      // image: "/proposed/first class credit.png", REMOVED
+      desc: "Comprehensive corporate portal with integrated customer service features.",
+      details: [
+        "9 custom-designed pages",
+        "Dual language support (BM & ENG)",
+        "Loan calculator & inquiry forms",
+        "Secure customer portal placeholder"
+      ],
+      price: 5500
+    },
+    {
+      title: "Koperasi Kapital Rakyat",
+      // image: "/proposed/koperasi kapital rakyat.png", REMOVED
+      desc: "Trust-focused institutional website for cooperative members.",
+      details: [
+        "9 informational pages",
+        "Member login area structure",
+        "Annual report download center",
+        "News & announcements system"
+      ],
+      price: 5500
     }
   ],
   subtotal: 23000,
