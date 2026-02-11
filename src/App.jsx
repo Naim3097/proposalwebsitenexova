@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Server, Shield, Smartphone, Code, Layout, Check, Mail, Phone, MapPin, Rocket, ArrowUpRight, Quote, ShoppingBag, Info, Calendar, Palette, Instagram, Camera, Layers } from 'lucide-react';
+import { Globe, Server, Shield, Smartphone, Code, Layout, Check, Mail, Phone, MapPin, Rocket, ArrowUpRight, Quote, ShoppingBag, Info, Calendar, Palette, Instagram, Camera, Layers, ExternalLink } from 'lucide-react';
 
 /* 
   PROPOSAL DATA 
@@ -511,8 +511,14 @@ function App() {
                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></div>
                        <div className="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
                    </div>
-                   <div className="mx-auto w-1/2 h-4 bg-white rounded text-[9px] text-center text-slate-300 flex items-center justify-center">
-                      {service.url ? service.url.replace('https://', '').replace(/\/$/, '') : 'nexova-secure-preview.com'}
+                   <div className="mx-auto w-1/2 h-4 bg-white rounded text-[9px] text-center flex items-center justify-center overflow-hidden">
+                      {service.url ? (
+                        <a href={service.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600 hover:underline block w-full truncate px-1 font-medium z-10 relative">
+                           {service.url.replace('https://', '').replace(/\/$/, '')}
+                        </a>
+                      ) : (
+                        <span className="text-slate-300">nexova-secure-preview.com</span>
+                      )}
                    </div>
                 </div>
                 {/* Mockup Image or Live Preview */}
@@ -538,6 +544,11 @@ function App() {
                 <div>
                    <h3 className="text-2xl font-bold text-slate-800 mb-1">{service.title}</h3>
                    <p className="text-slate-500 text-sm mb-3">{service.desc}</p>
+                   {service.url && (
+                     <a href={service.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-100 px-3 py-1.5 rounded-lg mb-4 transition-colors">
+                       <ExternalLink size={12} /> Live Preview: {service.url.replace('https://', '')}
+                     </a>
+                   )}
                 </div>
                 <div className="font-mono font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-lg">
                    RM {service.price.toLocaleString()}
@@ -568,8 +579,14 @@ function App() {
                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80"></div>
                        <div className="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
                    </div>
-                   <div className="mx-auto w-1/2 h-4 bg-white rounded text-[9px] text-center text-slate-300 flex items-center justify-center">
-                      {service.url ? service.url.replace('https://', '').replace(/\/$/, '') : 'nexova-secure-preview.com'}
+                   <div className="mx-auto w-1/2 h-4 bg-white rounded text-[9px] text-center flex items-center justify-center overflow-hidden">
+                      {service.url ? (
+                        <a href={service.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-600 hover:underline block w-full truncate px-1 font-medium z-10 relative">
+                           {service.url.replace('https://', '').replace(/\/$/, '')}
+                        </a>
+                      ) : (
+                        <span className="text-slate-300">nexova-secure-preview.com</span>
+                      )}
                    </div>
                 </div>
                 <div className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden">
@@ -585,6 +602,11 @@ function App() {
                 <div>
                    <h3 className="text-2xl font-bold text-slate-800 mb-1">{service.title}</h3>
                    <p className="text-slate-500 text-sm mb-3">{service.desc}</p>
+                   {service.url && (
+                     <a href={service.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-100 px-3 py-1.5 rounded-lg mb-4 transition-colors">
+                       <ExternalLink size={12} /> Live Preview: {service.url.replace('https://', '')}
+                     </a>
+                   )}
                 </div>
                 <div className="font-mono font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-lg">
                    RM {service.price.toLocaleString()}
