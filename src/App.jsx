@@ -31,12 +31,13 @@ const proposalData = {
     {
       title: "Katimas Properties",
       image: "/proposed/katimas properties.png",
-      desc: "Modern real estate showcase platform emphasizing visual portfolio.",
+      url: "https://katimas-ui-2.vercel.app/",
+      desc: "Minimal, smooth corporate theme with integrated brand kit and corporate colors.",
       details: [
         "6 high-impact visual pages",
         "Property listing gallery",
-        "Interactive location maps",
-        "Direct agent WhatsApp integration"
+        "Integrated proposed brand kit",
+        "Modern minimal design"
       ],
       price: 4200
     },
@@ -511,7 +512,7 @@ function App() {
                        <div className="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
                    </div>
                    <div className="mx-auto w-1/2 h-4 bg-white rounded text-[9px] text-center text-slate-300 flex items-center justify-center">
-                      nexova-secure-preview.com
+                      {service.url ? service.url.replace('https://', '').replace(/\/$/, '') : 'nexova-secure-preview.com'}
                    </div>
                 </div>
                 {/* Mockup Image - Full Cover */}
@@ -559,7 +560,7 @@ function App() {
                        <div className="w-2.5 h-2.5 rounded-full bg-green-400/80"></div>
                    </div>
                    <div className="mx-auto w-1/2 h-4 bg-white rounded text-[9px] text-center text-slate-300 flex items-center justify-center">
-                      nexova-secure-preview.com
+                      {service.url ? service.url.replace('https://', '').replace(/\/$/, '') : 'nexova-secure-preview.com'}
                    </div>
                 </div>
                 <div className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden">
